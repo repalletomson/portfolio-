@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { ThemeProvider } from "@/components/provider" 
 const inter = Inter({ subsets: ["latin"] });
-
+import  "@/public/icon.png"
 export const metadata: Metadata = {
-  title: "Tomoson portfolio",
+  title: "Tomson portfolio",
+  icons:"/icon2.png" ,
   description: "Minimastic and animated portfolio",
 };
 
@@ -16,7 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>    <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider></body>
     </html>
   );
 }
